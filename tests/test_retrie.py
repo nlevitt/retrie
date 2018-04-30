@@ -67,19 +67,19 @@ def test_monkey():
     rt = retrie.Retrie('monkey')
     assert rt.regex_str() == 'monkey'
     rt.add('money')
-    assert rt.regex_str() == 'mon(key|ey)'
+    assert rt.regex_str() == 'mon(?:key|ey)'
     rt.add('monk')
-    assert rt.regex_str() == 'mon(k(ey)?|ey)'
+    assert rt.regex_str() == 'mon(?:k(?:ey)?|ey)'
     rt.add('monks')
-    assert rt.regex_str() == 'mon(k(ey|s)?|ey)'
+    assert rt.regex_str() == 'mon(?:k(?:ey|s)?|ey)'
     rt.add('monkeynut')
-    assert rt.regex_str() == 'mon(k(ey(nut)?|s)?|ey)'
+    assert rt.regex_str() == 'mon(?:k(?:ey(?:nut)?|s)?|ey)'
     rt.add('monkeyface')
-    assert rt.regex_str() == 'mon(k(ey(nut|face)?|s)?|ey)'
+    assert rt.regex_str() == 'mon(?:k(?:ey(?:nut|face)?|s)?|ey)'
     rt.add('monkery')
-    assert rt.regex_str() == 'mon(k(e(y(nut|face)?|ry)|s)?|ey)'
+    assert rt.regex_str() == 'mon(?:k(?:e(?:y(?:nut|face)?|ry)|s)?|ey)'
     rt.add('ape')
-    assert rt.regex_str() == 'mon(k(e(y(nut|face)?|ry)|s)?|ey)|ape'
+    assert rt.regex_str() == 'mon(?:k(?:e(?:y(?:nut|face)?|ry)|s)?|ey)|ape'
 
 def test_common_prefix():
     assert retrie.common_prefix('a', 'b') == ''

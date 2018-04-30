@@ -43,7 +43,7 @@ class _RetrieNode:
     def regex_str(self):
         re_str = re.escape(self.value)
         if self.children:
-            re_str += '('
+            re_str += '(?:'
             re_str += '|'.join(child.regex_str() for child in self.children)
             re_str += ')'
             if self.terminal:
